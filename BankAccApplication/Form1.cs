@@ -45,7 +45,7 @@ namespace BankAccApplication
 
         private void DepositBtn_Click(object sender, EventArgs e)
         {
-            if (BankAccountsGrid.SelectedRows.Count == 1 && AmountNum.Value > 0) // nur dann einzahlung möglich
+            if (BankAccountsGrid.SelectedRows.Count == 1) 
             {
                 BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
 
@@ -60,7 +60,7 @@ namespace BankAccApplication
 
         private void WithdrawBtn_Click(object sender, EventArgs e)
         {
-            if (BankAccountsGrid.SelectedRows.Count == 1 && AmountNum.Value > 0) // nur dann Auszahlung möglich
+            if (BankAccountsGrid.SelectedRows.Count == 1) // nur dann Auszahlung möglich
             {
                 BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
 
