@@ -29,11 +29,19 @@ namespace BankAccApplication
                 OwnerTxt.Clear();
                 return;
             }
-
-            BankAccount bankaccount = new BankAccount(OwnerTxt.Text);
-            BankAccounts.Add(bankaccount);
+            if (ZinssatzNum.Value > 0)
+            {
+                //Sparkonto sparkonto = new Sparkonto(OwnerTxt.Text, ZinssatzNum.Value);
+                BankAccounts.Add(new Sparkonto(OwnerTxt.Text, ZinssatzNum.Value));
+            }
+            else
+            {
+                //BankAccount bankaccount = new BankAccount(OwnerTxt.Text);
+                BankAccounts.Add(new BankAccount(OwnerTxt.Text));
+            }
             RefreshGrid();
             OwnerTxt.Clear();
+            ZinssatzNum.Value = 0;
 
         }
 
@@ -45,7 +53,7 @@ namespace BankAccApplication
 
         private void DepositBtn_Click(object sender, EventArgs e)
         {
-            if (BankAccountsGrid.SelectedRows.Count == 1) 
+            if (BankAccountsGrid.SelectedRows.Count == 1)
             {
                 BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
 
@@ -70,6 +78,11 @@ namespace BankAccApplication
                 MessageBox.Show(message);
 
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
