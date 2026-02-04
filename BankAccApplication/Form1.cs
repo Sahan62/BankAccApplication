@@ -49,8 +49,10 @@ namespace BankAccApplication
             {
                 BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
 
-                selectedBankAccount.Balance += AmountNum.Value;
+                string message = selectedBankAccount.Deposit(AmountNum.Value);
                 RefreshGrid();
+                AmountNum.Value = 0;
+                MessageBox.Show(message);
 
 
             }
@@ -62,16 +64,10 @@ namespace BankAccApplication
             {
                 BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
 
-                if (selectedBankAccount.Balance < AmountNum.Value)
-                {
-                    MessageBox.Show("Zu wenig Kontoguthaben!");
-                    return;
-                }
-                else
-                {
-                    selectedBankAccount.Balance -= AmountNum.Value;
-                    RefreshGrid();
-                }
+                string message = selectedBankAccount.Withdraw(AmountNum.Value);
+                RefreshGrid();
+                AmountNum.Value = 0;
+                MessageBox.Show(message);
 
             }
         }
