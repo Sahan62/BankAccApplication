@@ -1,3 +1,5 @@
+using System.Drawing.Imaging.Effects;
+
 namespace BankAccApplication
 {
     public partial class Form1 : Form
@@ -7,9 +9,6 @@ namespace BankAccApplication
         {
             InitializeComponent(); //
 
-
-
-         
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -46,7 +45,35 @@ namespace BankAccApplication
 
         private void DepositBtn_Click(object sender, EventArgs e)
         {
+            if (BankAccountsGrid.SelectedRows.Count == 1 && AmountNum.Value > 0) // nur dann einzahlung möglich
+            {
+                BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
 
+                selectedBankAccount.Balance += AmountNum.Value;
+                RefreshGrid();
+
+
+            }
+        }
+
+        private void WithdrawBtn_Click(object sender, EventArgs e)
+        {
+            if (BankAccountsGrid.SelectedRows.Count == 1 && AmountNum.Value > 0) // nur dann Auszahlung möglich
+            {
+                BankAccount selectedBankAccount = BankAccountsGrid.SelectedRows[0].DataBoundItem as BankAccount;
+
+                if (selectedBankAccount.Balance < AmountNum.Value)
+                {
+                    MessageBox.Show("Zu wenig Kontoguthaben!");
+                    return;
+                }
+                else
+                {
+                    selectedBankAccount.Balance -= AmountNum.Value;
+                    RefreshGrid();
+                }
+
+            }
         }
     }
 }

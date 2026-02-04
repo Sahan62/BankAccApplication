@@ -73,6 +73,8 @@
             // 
             AmountNum.Font = new Font("Segoe UI", 12F);
             AmountNum.Location = new Point(195, 455);
+            AmountNum.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
+            AmountNum.Minimum = new decimal(new int[] { 9999999, 0, 0, int.MinValue });
             AmountNum.Name = "AmountNum";
             AmountNum.Size = new Size(216, 34);
             AmountNum.TabIndex = 3;
@@ -105,6 +107,7 @@
             WithdrawBtn.TabIndex = 6;
             WithdrawBtn.Text = "Withdraw";
             WithdrawBtn.UseVisualStyleBackColor = true;
+            WithdrawBtn.Click += WithdrawBtn_Click;
             // 
             // CreateAccBtn
             // 
