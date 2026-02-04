@@ -95,6 +95,7 @@
             DepositBtn.TabIndex = 5;
             DepositBtn.Text = "Deposit";
             DepositBtn.UseVisualStyleBackColor = true;
+            DepositBtn.Click += DepositBtn_Click;
             // 
             // WithdrawBtn
             // 
@@ -113,6 +114,7 @@
             CreateAccBtn.TabIndex = 7;
             CreateAccBtn.Text = "Create account";
             CreateAccBtn.UseVisualStyleBackColor = true;
+            CreateAccBtn.Click += CreateAccBtn_Click;
             // 
             // Form1
             // 

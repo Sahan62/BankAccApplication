@@ -2,26 +2,49 @@ namespace BankAccApplication
 {
     public partial class Form1 : Form
     {
+        List<BankAccount> BankAccounts = new List<BankAccount>(); //globale Variable, schreibe lieber groﬂ
         public Form1()
         {
             InitializeComponent(); //
-                         
-            BankAccount account = new BankAccount("Sahan Dogan"); //creatinng new Object
- 
-            BankAccount account2 = new BankAccount("Cristiano Ronaldo"); //creatinng new Object
-          
-            BankAccount account3 = new BankAccount("Lionel Messi"); //creatinng new Object
-           
 
-            List<BankAccount> bankAccounts = new List<BankAccount>();
-            bankAccounts.Add(account);
-            bankAccounts.Add(account2);
-            bankAccounts.Add(account3);
 
-            BankAccountsGrid.DataSource = bankAccounts;
+
+         
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateAccBtn_Click(object sender, EventArgs e)
+        {
+            string input = OwnerTxt.Text;
+
+            if (string.IsNullOrEmpty(OwnerTxt.Text))
+                return;
+            //MessageBox.Show("Testen von Events");
+            if (!input.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
+            {
+                MessageBox.Show("Der Name darf nur Buchstaben und Leerzeichen enthalten!");
+                OwnerTxt.Clear();
+                return;
+            }
+
+            BankAccount bankaccount = new BankAccount(OwnerTxt.Text);
+            BankAccounts.Add(bankaccount);
+            RefreshGrid();
+            OwnerTxt.Clear();
+
+        }
+
+        private void RefreshGrid()
+        {
+            BankAccountsGrid.DataSource = null; //clear grid
+            BankAccountsGrid.DataSource = BankAccounts; //set new data source for grid
+        }
+
+        private void DepositBtn_Click(object sender, EventArgs e)
         {
 
         }
