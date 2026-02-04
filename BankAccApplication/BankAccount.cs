@@ -8,7 +8,7 @@ namespace BankAccApplication
     {
         public string owner { get; set; }
         public Guid accountNumber { get; set; } //globally unique identifier, unique id zum benutzen der AccountNr
-        public decimal Balance { get; private set; } //Balance kann ohne weiters gelesen werden, aber Änderung nur möglich innerhalb Klasse
+        public decimal Balance { get; protected set; } //Balance kann ohne weiters gelesen werden, aber Änderung nur möglich innerhalb Klasse, oder in child Klassen
 
         public BankAccount(string owner) //Konstruktor
         {
@@ -17,7 +17,7 @@ namespace BankAccApplication
             Balance = 0; // Bei Kontoerstellung --> Kontoguthaben = 0
         }
 
-        public string Deposit(decimal amount)
+        public virtual string Deposit(decimal amount) //virtual, child kann seine Version dieser funktion nutzen
         {
             if (amount <= 0) return "Der Betrag kann nicht eingezahlt werden. Ungültige Eingabe";
 

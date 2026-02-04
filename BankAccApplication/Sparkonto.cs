@@ -13,5 +13,15 @@ namespace BankAccApplication
             this.Zinssatz = Zinssatz;
 
         }
+        public override string Deposit(decimal amount)
+        {
+            if (amount <= 0) return "Der Betrag kann nicht eingezahlt werden. Ungültige Eingabe";
+
+            if (amount > 20000) return "Zu hoher Einzahlungs-Betrag für Automaten! Bitte an das Personal wenden";
+
+            decimal Zinsen = (Zinssatz / 100) * amount;
+            Balance += amount + Zinsen;
+            return "Einzahlung erfolgreich.";
+        }
     }
 }
