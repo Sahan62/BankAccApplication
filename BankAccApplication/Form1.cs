@@ -6,20 +6,12 @@ namespace BankAccApplication
         {
             InitializeComponent(); //
                          
-            BankAccount account = new BankAccount(); //creatinng new Object
-            account.Owner = "Sahan Dogan";
-            account.accountNumber = Guid.NewGuid();
-            account.Balance = 500;
-
-            BankAccount account2 = new BankAccount(); //creatinng new Object
-            account2.Owner = "Cristiano Ronaldo";
-            account2.accountNumber = Guid.NewGuid();
-            account2.Balance = 999;
-
-            BankAccount account3 = new BankAccount(); //creatinng new Object
-            account3.Owner = "Lionel Messi";
-            account3.accountNumber = Guid.NewGuid();
-            account3.Balance = 1000;
+            BankAccount account = new BankAccount("Sahan Dogan"); //creatinng new Object
+ 
+            BankAccount account2 = new BankAccount("Cristiano Ronaldo"); //creatinng new Object
+          
+            BankAccount account3 = new BankAccount("Lionel Messi"); //creatinng new Object
+           
 
             List<BankAccount> bankAccounts = new List<BankAccount>();
             bankAccounts.Add(account);
